@@ -10,5 +10,12 @@ import scrapy
 
 class JavlibrarycrawlItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    title = scrapy.Field() #
+    designation = scrapy.Field() # ABP-108
+    url = scrapy.Field() #javliiqq6e
+    category = scrapy.Field() # categories
+    release_date = scrapy.Field() # 2015-04-24
+    duration = scrapy.Field() # 120
+    image_urls = scrapy.Field() #
+    images = scrapy.Field()
+    actor = scrapy.Field()
