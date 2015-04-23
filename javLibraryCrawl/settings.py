@@ -12,7 +12,7 @@ BOT_NAME = 'javLibraryCrawl'
 
 SPIDER_MODULES = ['javLibraryCrawl.spiders']
 NEWSPIDER_MODULE = 'javLibraryCrawl.spiders'
-ITEM_PIPELINES = {'scrapy.contrib.pipeline.images.ImagesPipeline': 1,'javLibraryCrawl.pipelines.MongoDBPipeline':5,}
+ITEM_PIPELINES = {'scrapy.contrib.pipeline.images.ImagesPipeline': 1,}
 
 IMAGES_STORE = 'src/images'
 

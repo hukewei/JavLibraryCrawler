@@ -7,15 +7,15 @@ from javLibraryCrawl.items import JavlibrarycrawlItem
 
 
 class BestRatedSpider(CrawlSpider):
-    name = "best_rated_spider"
+    name = "actor_spider"
     allowed_domains = ["javlibrary.com"]
     start_urls = [
-        "http://www.javlibrary.com/cn/vl_bestrated.php",
+        "http://www.javlibrary.com/cn/star_list.php",
     ]
     rules = (
         # Extract links matching 'category.php'
         # and follow links from them (since no callback means follow=True by default).
-        Rule(SgmlLinkExtractor(allow=('vl_bestrated\.php', ))),
+        Rule(SgmlLinkExtractor(allow=('vl_star\.php', ))),
         # Extract links matching 'item.php' and parse them with the spider's method parse_item
         Rule(SgmlLinkExtractor(allow=(r'/\?v=jav.*',)), callback='parse_video', follow=True),
     )
@@ -23,8 +23,8 @@ class BestRatedSpider(CrawlSpider):
     def parse_video(self, response):
         """
         The lines below is a spider contract. For more info see:
-        http://www.javlibrary.com/cn/vl_bestrated.php
-        @url http://www.javlibrary.com/cn/vl_bestrated.php
+        http://www.javlibrary.com/cn/star_list.php
+        @url http://www.javlibrary.com/cn/star_list.php
         @scrapes name
         """
         video = Selector(response)
