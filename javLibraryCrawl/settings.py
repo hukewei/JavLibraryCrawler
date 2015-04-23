@@ -23,7 +23,7 @@ IMAGES_THUMBS = {
 MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
 MONGODB_DB = "javLibrary"
-MONGODB_COLLECTION = "questions"
+MONGODB_COLLECTION = "best_rated"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'javLibraryCrawl (+http://www.yourdomain.com)'
