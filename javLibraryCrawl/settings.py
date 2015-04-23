@@ -12,6 +12,18 @@ BOT_NAME = 'javLibraryCrawl'
 
 SPIDER_MODULES = ['javLibraryCrawl.spiders']
 NEWSPIDER_MODULE = 'javLibraryCrawl.spiders'
+ITEM_PIPELINES = {'scrapy.contrib.pipeline.images.ImagesPipeline': 1,'javLibraryCrawl.pipelines.MongoDBPipeline':5,}
+
+IMAGES_STORE = 'src/images'
+
+IMAGES_THUMBS = {
+    'small': (50, 50),
+}
+
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "javLibrary"
+MONGODB_COLLECTION = "questions"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'javLibraryCrawl (+http://www.yourdomain.com)'
