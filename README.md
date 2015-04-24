@@ -35,14 +35,14 @@ This project contains two type of crawlers:
 * ALL movies (actor_spider)
 
 To start the crawlers, please run : 
+Crawl only best rated movies (500 movies) :
 ```
 scrapy crawl best_rated_spider
 ```
-to crawl only best rated movies (500 movies) or
+or crawl all movies in the library(> 150000 movies, the somme of all cover images is around 16 GB ).
 ```
 scrapy crawl actor_spider
 ```
-to crawl all movies in the library.
 
 ##Credit
 This project uses the [scrapy](https://github.com/scrapy/scrapy) to build the crawlers.
