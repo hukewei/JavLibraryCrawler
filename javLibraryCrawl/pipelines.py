@@ -31,9 +31,9 @@ class MongoDBPipeline(object):
             settings['MONGODB_SERVER'],
             settings['MONGODB_PORT']
         )
-        db = connection[settings['MONGODB_DB']]
         
     def process_item(self, item, spider):
+        db = connection[settings['MONGODB_DB']]
         if spider.name == 'actor_spider':
             self.collection = db[settings['MONGODB_COLLECTION']]
         elif spider.name == 'best_rated_spider':
