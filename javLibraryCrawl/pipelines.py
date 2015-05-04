@@ -32,9 +32,20 @@ class MongoDBPipeline(object):
             settings['MONGODB_PORT']
         )
         db = connection[settings['MONGODB_DB']]
-        self.collection = db[settings['MONGODB_COLLECTION']]
-
+        
     def process_item(self, item, spider):
+        if spider.name == 'actor_spider':
+            self.collection = db[settings['MONGODB_COLLECTION']]
+        elif spider.name == 'best_rated_spider':
+            self.collection = db[settings['MONGODB_COLLECTION_BEST_RATED']]
+        elif spider.name == 'most_wanted_spider':
+            self.collection = db[settings['MONGODB_COLLECTION_MOST_WANTED']]
+        elif spider.name == 'new_releases_spider':
+            self.collection = db[settings['MONGODB_COLLECTION_NEW_RELEASES']]
+        elif spider.name == 'new_entries_spider':
+            self.collection = db[settings['MONGODB_COLLECTION_NEW_ENTRIES']]
+        else:
+            self.collection = db[settings['MONGODB_COLLECTION']]
         valid = True
         for data in item:
             if not data:
