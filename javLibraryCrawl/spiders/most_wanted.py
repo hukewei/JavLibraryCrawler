@@ -10,7 +10,7 @@ class BestRatedSpider(CrawlSpider):
     name = "most_wanted_spider"
     allowed_domains = ["javlibrary.com"]
     start_urls = [
-        "http://www.javlibrary.com/cn/vl_mostwanted.php",
+        "http://www.javlibrary.com/cn/vl_mostwanted.php?&mode=&page=25",
     ]
     rules = (
         # Extract links matching 'category.php'

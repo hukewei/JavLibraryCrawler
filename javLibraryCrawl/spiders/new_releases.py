@@ -10,7 +10,7 @@ class BestRatedSpider(CrawlSpider):
     name = "new_releases_spider"
     allowed_domains = ["javlibrary.com"]
     start_urls = [
-        "http://www.javlibrary.com/cn/vl_newrelease.php",
+        "http://www.javlibrary.com/cn/vl_newrelease.php?&mode=&page=25",
     ]
     rules = (
         # Extract links matching 'category.php'
