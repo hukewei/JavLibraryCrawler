@@ -68,16 +68,17 @@ class MongoDBPipeline(object):
     def send_notification(self, _id, title, actors):
 	for actor in actors:
             client_ids = self.get_actor_subscribers(actor)
-            push = self._jpush.create_push()
-            push.audience = jpush.audience(
+            if client_ids:
+                push = self._jpush.create_push()
+                push.audience = jpush.audience(
                     jpush.registration_id(*client_ids)
-            )
-	    log.msg("client ids = " + json.dumps(client_ids))
-	    message = jpush.android(alert=u'新片通知 : 您关注的艺人 ' + actor.encode('utf-8') + u' 有新片 %s ，点击查看详情。' %(title.encode('utf-8')), extras={'VideoID':str(_id)})
-            push.notification = jpush.notification(alert=u'新片通知 : 您关注的艺人发布了新片，点击查看详情。', android=message)
-	    log.msg("Sending push notification for %s and %s" %(title, actor))
-            push.platform = jpush.all_
-            push.send()
+                )
+	        log.msg("client ids = " + json.dumps(client_ids))
+	        message = jpush.android(alert=u'新片通知 : 您关注的艺人 ' + actor.encode('utf-8') + u' 有新片 %s ，点击查看详情。' %(title.encode('utf-8')), extras={'VideoID':str(_id)})
+                push.notification = jpush.notification(alert=u'新片通知 : 您关注的艺人发布了新片，点击查看详情。', android=message)
+	        log.msg("Sending push notification for %s and %s" %(title, actor))
+                push.platform = jpush.all_
+                push.send()
 
     def is_already_in_db(self, title):
         'check if the title is already in the current db or not'
@@ -95,5 +96,6 @@ class MongoDBPipeline(object):
         cursor = self.collection.find({'notified_actors' : actor}, { 'clientID': 1, '_id':0 })
         for record in cursor:
             result.append(record.get('clientID'))
+	result.append('02068f6a423')
 	return result
 
